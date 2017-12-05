@@ -1,0 +1,21 @@
+{
+    "name": "bluemountainteam/roles",
+    "description": "Fork from Bican/roles to Laravel 5.3",
+    "keywords": ["roles", "permissions", "acl", "auth", "laravel", "illuminate"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damien Louvard",
+            "email": "contact@damien-louvard.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "~5.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "BlueMountainTeam\\Roles": "src/"
+        }
+    }
+}
