@@ -33,8 +33,8 @@ Pull this package in through Composer (file `composer.json`).
 ```js
 {
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.3.*",
+        "php": ">7.2",
+        "laravel/framework": "6.*",
         "bican/roles": "master@dev"
     }
 }
@@ -61,7 +61,7 @@ Add the package to your application service providers in `config/app.php` file.
     /**
      * Third Party Service Providers...
      */
-    Dlouvard\Roles\RolesServiceProvider::class,
+    BlueMountainTeam\Roles\RolesServiceProvider::class,
 
 ],
 ```
@@ -70,8 +70,8 @@ Add the package to your application service providers in `config/app.php` file.
 
 Publish the package config file and migrations to your application. Run these commands inside your terminal.
 
-    php artisan vendor:publish --provider="Dlouvard\Roles\RolesServiceProvider" --tag=config
-    php artisan vendor:publish --provider="Dlouvard\Roles\RolesServiceProvider" --tag=migrations
+    php artisan vendor:publish --provider="BlueMountainTeam\Roles\RolesServiceProvider" --tag=config
+    php artisan vendor:publish --provider="BlueMountainTeam\Roles\RolesServiceProvider" --tag=migrations
 
 And also run migrations.
 
@@ -84,8 +84,8 @@ And also run migrations.
 Include `HasRoleAndPermission` trait and also implement `HasRoleAndPermission` contract inside your `User` model.
 
 ```php
-use Dlouvard\Roles\Traits\HasRoleAndPermission;
-use Dlouvard\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use BlueMountainTeam\Roles\Traits\HasRoleAndPermission;
+use BlueMountainTeam\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
@@ -99,7 +99,7 @@ And that's it!
 ### Creating Roles
 
 ```php
-use Dlouvard\Roles\Models\Role;
+use BlueMountainTeam\Roles\Models\Role;
 
 $adminRole = Role::create([
     'name' => 'Admin',
@@ -194,7 +194,7 @@ if ($user->level() > 4) {
 It's very simple thanks to `Permission` model.
 
 ```php
-use Dlouvard\Roles\Models\Permission;
+use BlueMountainTeam\Roles\Models\Permission;
 
 $createUsersPermission = Permission::create([
     'name' => 'Create users',
@@ -214,7 +214,7 @@ You can attach permissions to a role or directly to a specific user (and of cour
 
 ```php
 use App\User;
-use Dlouvard\Roles\Models\Role;
+use BlueMountainTeam\Roles\Models\Role;
 
 $role = Role::find($roleId);
 $role->attachPermission($createUsersPermission); // permission attached to a role
@@ -261,7 +261,7 @@ Let's say you have an article and you want to edit it. This article belongs to a
 
 ```php
 use App\Article;
-use Dlouvard\Roles\Models\Permission;
+use BlueMountainTeam\Roles\Models\Permission;
 
 $editArticlesPermission = Permission::create([
     'name' => 'Edit articles',
@@ -328,9 +328,9 @@ protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    'role' => \Dlouvard\Roles\Middleware\VerifyRole::class,
-    'permission' => \Dlouvard\Roles\Middleware\VerifyPermission::class,
-    'level' => \Dlouvard\Roles\Middleware\VerifyLevel::class,
+    'role' => \BlueMountainTeam\Roles\Middleware\VerifyRole::class,
+    'permission' => \BlueMountainTeam\Roles\Middleware\VerifyPermission::class,
+    'level' => \BlueMountainTeam\Roles\Middleware\VerifyLevel::class,
 ];
 ```
 
@@ -356,7 +356,7 @@ $router->get('/example', [
 ]);
 ```
 
-It throws `\Dlouvard\Roles\Exceptions\RoleDeniedException`, `\Dlouvard\Roles\Exceptions\PermissionDeniedException` or `\Dlouvard\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
+It throws `\BlueMountainTeam\Roles\Exceptions\RoleDeniedException`, `\BlueMountainTeam\Roles\Exceptions\PermissionDeniedException` or `\BlueMountainTeam\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
 
 You can catch these exceptions inside `app/Exceptions/Handler.php` file and do whatever you want.
 
@@ -370,7 +370,7 @@ You can catch these exceptions inside `app/Exceptions/Handler.php` file and do w
  */
 public function render($request, Exception $e)
 {
-    if ($e instanceof \Dlouvard\Roles\Exceptions\RoleDeniedException) {
+    if ($e instanceof \BlueMountainTeam\Roles\Exceptions\RoleDeniedException) {
         // you can for example flash message, redirect...
         return redirect()->back();
     }
