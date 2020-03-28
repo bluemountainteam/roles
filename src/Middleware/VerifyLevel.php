@@ -31,7 +31,7 @@ class VerifyLevel
      * @param \Closure $next
      * @param int $level
      * @return mixed
-     * @throws \Dlouvard\Roles\Exceptions\LevelDeniedException
+     * @throws \BlueMountainTeam\Roles\Exceptions\LevelDeniedException
      */
     public function handle($request, Closure $next, $level)
     {

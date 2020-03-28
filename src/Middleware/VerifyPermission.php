@@ -1,6 +1,6 @@
 <?php
 
-namespace Dlouvard\Roles\Middleware;
+namespace BlueMountainTeam\Roles\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
@@ -31,7 +31,7 @@ class VerifyPermission
      * @param \Closure $next
      * @param int|string $permission
      * @return mixed
-     * @throws \Dlouvard\Roles\Exceptions\PermissionDeniedException
+     * @throws \BlueMountainTeam\Roles\Exceptions\PermissionDeniedException
      */
     public function handle($request, Closure $next, $permission)
     {

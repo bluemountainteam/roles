@@ -34,8 +34,8 @@ return [
     |--------------------------------------------------------------------------
     |
     | If you want, you can replace default models from this package by models
-    | you created. Have a look at `Dlouvard\Roles\Models\Role` model and
-    | `Dlouvard\Roles\Models\Permission` model.
+    | you created. Have a look at `BlueMountainTeam\Roles\Models\Role` model and
+    | `BlueMountainTeam\Roles\Models\Permission` model.
     |
     */
 
