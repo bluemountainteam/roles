@@ -33,9 +33,9 @@ Pull this package in through Composer (file `composer.json`).
 ```js
 {
     "require": {
-        "php": ">7.2",
-        "laravel/framework": "6.*",
-        "bican/roles": "master@dev"
+        "php": ">7.4",
+        "laravel/framework": "8.*",
+        "bluemountainteam/roles": "8.*"
     }
 }
 ```
@@ -385,7 +385,7 @@ You can change connection for models, slug separator, models path and there is a
 
 ## More Information
 
-For more information, please have a look at [HasRoleAndPermission](https://github.com/romanbican/roles/blob/master/src/Dlouvard/Roles/Contracts/HasRoleAndPermission.php) contract.
+For more information, please have a look at [HasRoleAndPermission](https://github.com/romanbican/roles/blob/master/src/BlueMountainTeam/Roles/Contracts/HasRoleAndPermission.php) contract.
 
 ## License
 
