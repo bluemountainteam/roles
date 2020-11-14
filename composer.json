@@ -14,8 +14,8 @@
         "illuminate/support": "8.*"
     },
     "autoload": {
-        "psr-0": {
-            "BlueMountainTeam\\Roles": "src/"
+        "psr-4": {
+            "BlueMountainTeam\\Roles\\": "src/"
         }
     }
 }
